@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "watch": "watchify src/*.js -o things-scene-clock.js src/index.js",
+    "serve": "watchify src/*.js -o things-scene-clock.js src/index.js & polyserve",
     "build": "browserify src/index.js -o things-scene-clock.js && uglifyjs things-scene-clock.js -o things-scene-clock-min.js"
   },
   "repository": {
