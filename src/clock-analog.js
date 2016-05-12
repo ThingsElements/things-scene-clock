@@ -26,8 +26,9 @@ export default class ClockAnalog extends scene.Ellipse {
     // 시계 원 그리기.
     ctx.beginPath();
     ctx.ellipse(cx, cy, Math.abs(rx), Math.abs(ry), 0, 0, 2 * Math.PI)
-    ctx.fillStyle = fillStyle
-    ctx.fill();
+    this.drawFill(ctx)
+    // ctx.fillStyle = fillStyle
+    // ctx.fill();
 
     ctx.strokeStyle = strokeStyle
     ctx.lineWidth = rx * 0.1;
@@ -83,11 +84,11 @@ export default class ClockAnalog extends scene.Ellipse {
 
 
     var timeOut
+
     timeOut = setTimeout(function(self) {
       self.invalidate()
+      clearTimeout(timeOut); // 이 함수가 없을 시 Invalidate가 1초에 여러번 그림.
     }, 1000, this)
-
-    clearTimeout(timeOut); // 이 함수가 없을 시 Invalidate가 1초에 여러번 그림.
   }
 }
 
