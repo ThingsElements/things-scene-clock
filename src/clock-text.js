@@ -33,12 +33,7 @@ function leadingZeros(n, digits) {
 export default class ClockText extends scene.Text {
 
   _draw(ctx) {
-    var { hidden = false } = this.model
-
-    if(!hidden){
-      setTimeout(timer, 1000, this)
-    }
-
+    setTimeout(timer, 1000, this)
   }
 }
 
