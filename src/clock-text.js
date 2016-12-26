@@ -35,6 +35,10 @@ export default class ClockText extends scene.Text {
   _draw(ctx) {
     setTimeout(timer, 1000, this)
   }
+
+  isTextEdit() {
+    return false
+  }
 }
 
 scene.Component.register('clock-text', ClockText)
