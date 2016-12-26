@@ -84,8 +84,8 @@ export default class ClockAnalog extends scene.Ellipse {
       clearTimeout(timeOut); // 이 함수가 없을 시 Invalidate가 1초에 여러번 그림.
     }, 1000, this)
   }
-
-  isTextEdit() {
+  
+  get isTextEdit() {
     return false
   }
 }

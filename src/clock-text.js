@@ -36,7 +36,7 @@ export default class ClockText extends scene.Text {
     setTimeout(timer, 1000, this)
   }
 
-  isTextEdit() {
+  get isTextEdit() {
     return false
   }
 }
