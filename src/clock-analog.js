@@ -85,9 +85,6 @@ export default class ClockAnalog extends scene.Ellipse {
     }, 1000, this)
   }
 
-  get isTextEdit() {
-    return false
-  }
 }
 
 scene.Component.register('clock-analog', ClockAnalog)
