@@ -36,7 +36,7 @@ export default class ClockText extends scene.Text {
   _getTimeStamp() {
     var d = moment();
     var utc = this.get('utc')
-    var formatStr = this.get('timeFormat') || 'YYYY-MM-DD kk:mm:ss'
+    var formatStr = this.get('timeFormat') || 'YYYY-MM-DD HH:mm:ss'
 
     if(this.get('localTime')) {
       d.local();
