@@ -1,6 +1,6 @@
 {
   "name": "things-scene-clock",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "authors": [
     "Hatio Lab. <heartyoh@hatiolab.com>"
   ],
@@ -18,7 +18,8 @@
     "/test/"
   ],
   "dependencies": {
-    "things-scene": "^0.7.0"
+    "things-scene": "^0.7.0",
+    "moment": "^2.17.1"
   },
   "devDependencies": {
     "polymer": "Polymer/polymer#^1.2.0",

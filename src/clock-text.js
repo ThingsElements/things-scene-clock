@@ -1,39 +1,51 @@
-function timer(self){
-  self.set({
-    textType: 'f',
-    text: getTimeStamp()
-  })
-}
-
-function getTimeStamp() {
-  var d = new Date();
-  var s =
-    leadingZeros(d.getFullYear(), 4) + '-' +
-    leadingZeros(d.getMonth() + 1, 2) + '-' +
-    leadingZeros(d.getDate(), 2) + ' ' +
-
-    leadingZeros(d.getHours(), 2) + ':' +
-    leadingZeros(d.getMinutes(), 2) + ':' +
-    leadingZeros(d.getSeconds(), 2);
-
-  return s;
-}
-
-function leadingZeros(n, digits) {
-  var zero = '';
-  n = n.toString();
-
-  if (n.length < digits) {
-    for (var i = 0; i < digits - n.length; i++)
-      zero += '0';
-  }
-  return zero + n;
+const NATURE = {
+  mutable: false,
+  resizable: true,
+  rotatable: true,
+  properties : [{
+    type: 'string',
+    label: 'time-format',
+    name: 'timeFormat'
+  }, {
+    type: 'checkbox',
+    label: 'is-local-time',
+    name: 'localTime'
+  }, {
+    type: 'number',
+    label: 'utc',
+    name: 'utc'
+  }]
 }
 
 export default class ClockText extends scene.Text {
 
+  get nature() {
+    return NATURE
+  }
+
   _draw(ctx) {
-    setTimeout(timer, 1000, this)
+    setTimeout(this._timer.bind(this), 1000)
+  }
+
+  _timer() {
+    this.set({
+      text: this._getTimeStamp()
+    })
+  }
+
+  _getTimeStamp() {
+    var d = moment();
+    var utc = this.get('utc')
+    var formatStr = this.get('timeFormat') || 'YYYY-MM-DD kk:mm:ss'
+
+    if(this.get('localTime')) {
+      d.local();
+    } else {
+      d.utc().utcOffset(utc);
+    }
+
+
+    return d.format(formatStr)
   }
 
 }
