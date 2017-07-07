@@ -1,4 +1,7 @@
-const NATURE = {
+/*
+ * Copyright © HatioLab Inc. All rights reserved.
+ */
+ const NATURE = {
   mutable: false,
   resizable: true,
   rotatable: true,

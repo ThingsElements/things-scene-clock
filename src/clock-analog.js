@@ -1,3 +1,6 @@
+/*
+ * Copyright © HatioLab Inc. All rights reserved.
+ */
 function drawHand(ctx, pos, length, rx) {
     ctx.beginPath();
     ctx.lineWidth = rx;
