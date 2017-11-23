@@ -14,6 +14,11 @@ Copyright © HatioLab Inc. All rights reserved.
     <link rel="import" href="../../things-scene-viewer/things-scene-layer.html">
     <link rel="import" href="../../things-scene-viewer/things-scene-handler.html">
 
+    <link rel="import" href="../../things-designer-elements/things-editor-color.html">
+    <link rel="import" href="../../things-designer-elements/things-editor-color-stops.html">
+    <link rel="import" href="../../things-designer-elements/things-editor-properties.html">
+    <link rel="import" href="../../things-scene-modeler/things-scene-properties.html">
+
     <link rel="import" href="./things-scene-clock.html">
 
     <style is="custom-style">
@@ -25,8 +30,8 @@ Copyright © HatioLab Inc. All rights reserved.
 
     things-scene-viewer {
       display: block;
-      width: 640px;
-      height: 480px;
+      width: 900px;
+      height: 600px;
     }
     </style>
   </head>
@@ -35,12 +40,30 @@ Copyright © HatioLab Inc. All rights reserved.
     <template is="dom-bind" id="app">
       <p>An example of <code>&lt;things-scene-clock&gt;</code>:</p>
 
-      <things-scene-viewer id='scene' model='{{model}}' mode="1">
+      
+      <things-scene-viewer id='scene'
+                            scene='{{scene}}'
+                            selected='{{selected}}'
+                            model='[[model]]'
+                            mode="1">
         <things-scene-layer type="selection-layer"></things-scene-layer>
         <things-scene-layer type="modeling-layer"></things-scene-layer>
         <things-scene-handler type="text-editor"></things-scene-handler>
         <things-scene-handler type="move-handler"></things-scene-handler>
       </things-scene-viewer>
+
+      <fieldset class="same-width">
+        <legend>Clock style</legend>
+        <things-scene-properties scene="[[scene]]"
+                                 selected="[[selected]]"
+                                 model="{{target}}"
+                                 bounds="{{bounds}}">
+          <things-editor-properties id="properties"
+                                    target="{{target}}"
+                                    props="{{props}}">
+          </things-editor-properties>
+        </things-scene-properties>
+      </fieldset>
 
       <button id="change">Change Value</button>
 
@@ -52,8 +75,8 @@ Copyright © HatioLab Inc. All rights reserved.
 
         app.$.change.addEventListener('click', function() {
           var viewer = app.$.scene
-          viewer.findAll('clock-circle')[0].set('value', 0 + Math.round(Math.random() * 240))
-          viewer.findAll('clock-circle')[0].set('colorStops',[
+          viewer.findAll('clock-analog')[0].set('value', 0 + Math.round(Math.random() * 240))
+          viewer.findAll('clock-analog')[0].set('colorStops',[
               { position:40,
                 color: '#00ff00'},
               { position: 70,
@@ -63,29 +86,63 @@ Copyright © HatioLab Inc. All rights reserved.
         })
 
         app.model = {
+          width: 1500,
+          height: 1500,
           components: [{
             type: 'clock-analog',
-            cx: 900,
+            cx: 300,
             cy: 300,
-            rx: 200,
-            ry: 200,
+            rx: 100,
+            ry: 100,
             fillStyle: '#ffff00',
             strokeStyle: '#552555',
             fontColor: '#FF0000',
             lineWidth: 5,
-          }, {
-            type: 'clock-text',
-            top: 300,
-            left: 800,
-            width: 100,
-            height: 50,
-            fillStyle: '#ff00ff',
-            fontColor: '#FF0000',
-            lineWidth: 5,
-            localTime: true,
-            utc : 10
+          // }, {
+          //   type: 'clock-text',
+          //   top: 300,
+          //   left: 800,
+          //   width: 100,
+          //   height: 50,
+          //   fillStyle: '#ff00ff',
+          //   fontColor: '#FF0000',
+          //   lineWidth: 5,
+          //   localTime: true,
+          //   utc : 10
           }]
         }
+
+        app.props = [{
+          type: 'number',
+          label: 'hourwidth',
+          name: 'hourWidth',
+          property: 'hourWidth'
+        },{
+          type: 'number',
+          label: 'minute-width',
+          name: 'minuteWidth',
+          property: 'minuteWidth'
+        },{
+          type: 'number',
+          label: 'second-width',
+          name: 'secondWidth',
+          property: 'secondWidth'
+        },{
+          type: 'checkbox',
+          label: 'show-second',
+          name: 'showSecond',
+          property: 'showSecond'
+        },{
+          type: 'checkbox',
+          label: 'show-number',
+          name: 'showNumber',
+          property: 'showNumber'
+        },{
+          type: 'checkbox',
+          label: 'fill-interval',
+          name: 'fillInterval',
+          property: 'fillInterval'
+        }]
       });
     </script>
   </body>
