@@ -8,7 +8,7 @@ const NATURE = {
   rotatable: true,
   properties : [{
     type: 'number',
-    label: 'hourwidth',
+    label: 'hour-width',
     name: 'hourWidth',
     property: 'hourWidth'
   },{
@@ -88,8 +88,8 @@ export default class ClockAnalog extends scene.Ellipse {
 
     ctx.strokeStyle = strokeStyle
     ctx.lineWidth = lineWidth || rx * 0.1;
-    ctx.fill();
-    ctx.stroke();
+    this.drawFill(ctx);
+    this.drawStroke(ctx);
 
     ctx.beginPath();
     ctx.translate(cx, cy);
@@ -159,6 +159,10 @@ export default class ClockAnalog extends scene.Ellipse {
       self.invalidate()
       clearTimeout(timeOut); // 이 함수가 없을 시 Invalidate가 1초에 여러번 그림.
     }, 1000, this)
+  }
+  
+  get nature(){
+    return NATURE;
   }
 
 }
