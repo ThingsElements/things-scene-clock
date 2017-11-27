@@ -94,10 +94,14 @@ Copyright © HatioLab Inc. All rights reserved.
             cy: 300,
             rx: 100,
             ry: 100,
+            hourWidth: 3,
+            minuteWidth: 2,
             fillStyle: '#ffff00',
-            strokeStyle: '#552555',
-            fontColor: '#FF0000',
+            strokeStyle: '#FF0000',
+            fontColor: '#0000FF',
             lineWidth: 5,
+            innerCircleSize: 20,
+            innerCircleColor: '#00FF00',
           // }, {
           //   type: 'clock-text',
           //   top: 300,
@@ -129,6 +133,11 @@ Copyright © HatioLab Inc. All rights reserved.
           property: 'secondWidth'
         },{
           type: 'checkbox',
+          label: 'needle-round',
+          name: 'needleRound',
+          property: 'needleRound'
+        },{
+          type: 'checkbox',
           label: 'show-second',
           name: 'showSecond',
           property: 'showSecond'
@@ -138,10 +147,15 @@ Copyright © HatioLab Inc. All rights reserved.
           name: 'showNumber',
           property: 'showNumber'
         },{
-          type: 'checkbox',
-          label: 'fill-interval',
-          name: 'fillInterval',
-          property: 'fillInterval'
+          type: 'number',
+          label: 'inner-circle-size',
+          name: 'innerCircleSize',
+          property: 'innerCircleSize'
+        },{
+          type: 'color',
+          label: 'inner-circle-color',
+          name: 'innerCircleColor',
+          property: 'innerCircleColor'
         }]
       });
     </script>
