@@ -1,6 +1,9 @@
 /*
  * Copyright © HatioLab Inc. All rights reserved.
  */
+
+ import { Component, Text } from '@hatiolab/things-scene'
+
  const NATURE = {
   mutable: false,
   resizable: true,
@@ -20,7 +23,7 @@
   }]
 }
 
-export default class ClockText extends scene.Text {
+export default class ClockText extends Text {
 
   get nature() {
     return NATURE
@@ -53,4 +56,4 @@ export default class ClockText extends scene.Text {
 
 }
 
-scene.Component.register('clock-text', ClockText)
+Component.register('clock-text', ClockText)
