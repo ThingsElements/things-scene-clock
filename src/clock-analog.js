@@ -78,7 +78,7 @@ export default class ClockAnalog extends Ellipse {
       needleRound = false,
       showSecond = true,
       showNumber = true,
-      innerCircleSize = 10,
+      innerCircleSize = 5,
       innerCircleColor = '#000'
     } = this.model;
 

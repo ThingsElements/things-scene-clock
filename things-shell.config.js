@@ -6,7 +6,7 @@ var templates = [{
   group: 'etc', /* line|shape|textAndMedia|chartAndGauge|table|container|dataSource|IoT|3D|warehouse|form|etc */
   icon: '../', /* 또는, Object */
   template: {
-    type: 'clock-analog',
+    type: 'clock analog',
     model: {
         type: 'clock-analog',
         cx: 150,
@@ -15,8 +15,10 @@ var templates = [{
         ry: 50,
         fillStyle: '#ffffff',
         strokeStyle: '#000000',
-        lineWidth: 1,
+        lineWidth: 5,
         alpha: 1,
+        innerCircleSize: 5,
+        innerCircleColor: '#000000',
     }
   }
 }, {
@@ -25,7 +27,7 @@ var templates = [{
   group: 'etc', /* line|shape|textAndMedia|chartAndGauge|table|container|dataSource|IoT|3D|warehouse|form|etc */
   icon: '../', /* 또는, Object */
   template: {
-    type: 'clock-text',
+    type: 'clock text',
     model: {
         type: 'clock-text',
         top: 100,
@@ -41,6 +43,8 @@ var templates = [{
     }
   }
 }];
+
+console.log(templates)
 
 module.exports = {
   locales,
