@@ -44,8 +44,6 @@ var templates = [{
   }
 }];
 
-console.log(templates)
-
 module.exports = {
   locales,
   templates
