@@ -3,6 +3,7 @@
  */
 
  import { Component, Text } from '@hatiolab/things-scene'
+ import moment from 'moment';
 
  const NATURE = {
   mutable: false,
