@@ -2,6 +2,8 @@
  * Copyright © HatioLab Inc. All rights reserved.
  */
 
+ import { Component, Ellipse } from '@hatiolab/things-scene'
+
 const NATURE = {
   mutable: false,
   resizable: true,
@@ -60,7 +62,7 @@ function drawHand(ctx, pos, length, rx, needleRound) {
     ctx.rotate(-pos);
 }
 
-export default class ClockAnalog extends scene.Ellipse {
+export default class ClockAnalog extends Ellipse {
 
   _draw(ctx) {
 
@@ -76,7 +78,7 @@ export default class ClockAnalog extends scene.Ellipse {
       needleRound = false,
       showSecond = true,
       showNumber = true,
-      innerCircleSize = 10,
+      innerCircleSize = 5,
       innerCircleColor = '#000'
     } = this.model;
 
@@ -167,4 +169,4 @@ export default class ClockAnalog extends scene.Ellipse {
 
 }
 
-scene.Component.register('clock-analog', ClockAnalog)
+Component.register('clock-analog', ClockAnalog)
