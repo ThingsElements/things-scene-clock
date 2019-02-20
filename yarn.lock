@@ -708,7 +708,14 @@
     three "^0.99.0"
     tinycolor2 "^1.4.1"
 
-"@hatiolab/things-scene@^2.5.0-rc", "@hatiolab/things-scene@^2.5.0-rc.19", "@hatiolab/things-scene@^2.5.0-rc.20", "@hatiolab/things-scene@^2.5.0-rc.21":
+"@hatiolab/things-scene@*":
+  version "2.5.7"
+  resolved "https://registry.yarnpkg.com/@hatiolab/things-scene/-/things-scene-2.5.7.tgz#47021395246d8fb573afc4f94590659c57e15365"
+  integrity sha512-mOBg9XcoJGAWKH7CJsC/nKNvzURw5ze6CwvjepSLtWMLzXIgrEgaDKGMGZgvkSlLFIo6aS1/hDzSQb+Vl9F+qQ==
+  dependencies:
+    lodash "^4.17.11"
+
+"@hatiolab/things-scene@^2.5.0-rc.19", "@hatiolab/things-scene@^2.5.0-rc.20", "@hatiolab/things-scene@^2.5.0-rc.21":
   version "2.5.0-rc.21"
   resolved "https://registry.yarnpkg.com/@hatiolab/things-scene/-/things-scene-2.5.0-rc.21.tgz#3c5b2497dac72fab2164fed736b2d27024f6478a"
   integrity sha512-+00Dev1SCl4Db7S1n5al+AjnsgRlXi5OusrPKmViANrtukuQITBuOmWN+cG2NLCr+hp6fBFUVqPFgJDJqV4R5Q==
