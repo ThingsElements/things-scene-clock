@@ -21,6 +21,30 @@
     type: 'number',
     label: 'utc',
     name: 'utc'
+  }, {
+    type: 'select',
+    label : 'week-language',
+    name : 'weekLanguage',
+    property: {
+      options: [
+        {
+          display: "English",
+          value: "en"
+        },
+        {
+          display: "Korean",
+          value: "ko"
+        },
+        {
+          display: "Chinese",
+          value: "zh_cn"
+        },
+        {
+          display: "Japanese",
+          value: "ja"
+        }
+      ]
+    }
   }]
 }
 
@@ -41,18 +65,21 @@ export default class ClockText extends Text {
   }
 
   _getTimeStamp() {
+    
     var d = moment();
+
     var utc = this.get('utc')
     var formatStr = this.get('timeFormat') || 'YYYY-MM-DD HH:mm:ss'
-
+    var week_lang = this.get('weekLanguage')
+    if(!this.get('weekLanguage')) {
+      week_lang = 'en'
+    }
     if(this.get('localTime')) {
       d.local();
     } else {
       d.utc().utcOffset(utc);
     }
-
-
-    return d.format(formatStr)
+    return d.lang(week_lang).format(formatStr)
   }
 
 }
