@@ -2,8 +2,8 @@
  * Copyright © HatioLab Inc. All rights reserved.
  */
 
-import { Component, Text } from "@hatiolab/things-scene";
-import moment from "moment";
+import { Component, Text } from '@hatiolab/things-scene'
+import moment from 'moment'
 
 const NATURE = {
   mutable: false,
@@ -11,79 +11,89 @@ const NATURE = {
   rotatable: true,
   properties: [
     {
-      type: "string",
-      label: "time-format",
-      name: "timeFormat"
+      type: 'string',
+      label: 'time-format',
+      name: 'timeFormat'
     },
     {
-      type: "checkbox",
-      label: "is-local-time",
-      name: "localTime"
+      type: 'checkbox',
+      label: 'is-local-time',
+      name: 'localTime'
     },
     {
-      type: "number",
-      label: "utc",
-      name: "utc"
+      type: 'number',
+      label: 'utc',
+      name: 'utc'
     },
     {
-      type: "select",
-      label: "week-language",
-      name: "weekLanguage",
+      type: 'select',
+      label: 'week-language',
+      name: 'weekLanguage',
       property: {
         options: [
           {
-            display: "English",
-            value: "en"
+            display: 'English',
+            value: 'en'
           },
           {
-            display: "Korean",
-            value: "ko"
+            display: 'Korean',
+            value: 'ko'
           },
           {
-            display: "Chinese",
-            value: "zh_cn"
+            display: 'Chinese',
+            value: 'zh_cn'
           },
           {
-            display: "Japanese",
-            value: "ja"
+            display: 'Japanese',
+            value: 'ja'
           }
         ]
       }
     }
   ]
-};
+}
 
 export default class ClockText extends Text {
   get nature() {
-    return NATURE;
+    return NATURE
   }
 
-  _draw(ctx) {
-    setTimeout(this._timer.bind(this), 1000);
+  render(ctx) {
+    super.render(ctx)
+
+    this._raf = requestAnimationFrame(() => {
+      setTimeout(() => {
+        this._timer()
+      }, 1000)
+    })
   }
 
   _timer() {
-    this.set({
-      text: this._getTimeStamp()
-    });
+    this.set('data', this._getTimeStamp())
   }
 
   _getTimeStamp() {
-    var d = moment();
+    var d = moment()
 
-    var utc = this.get("utc");
-    var formatStr = this.get("timeFormat") || "YYYY-MM-DD HH:mm:ss";
-    var week_lang = this.get("weekLanguage");
-    if (!this.get("weekLanguage")) {
-      week_lang = "en";
+    var utc = this.get('utc')
+    var formatStr = this.get('timeFormat') || 'YYYY-MM-DD HH:mm:ss'
+    var week_lang = this.get('weekLanguage')
+    if (!this.get('weekLanguage')) {
+      week_lang = 'en'
     }
-    if (this.get("localTime")) {
-      d.local();
+    if (this.get('localTime')) {
+      d.local()
     } else {
-      d.utc().utcOffset(utc);
+      d.utc().utcOffset(utc)
     }
-    return d.locale(week_lang).format(formatStr);
+    var result = d.locale(week_lang).format(formatStr)
+    return result
+  }
+
+  dispose() {
+    super.dispose()
+    cancelAnimationFrame(this._raf)
   }
 }
 
-Component.register("clock-text", ClockText);
+Component.register('clock-text', ClockText)
