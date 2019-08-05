@@ -1,5 +1,3 @@
-import locales from './locales';
-
 import analog from './assets/clock-analog.png';
 import digital from './assets/clock-digital.png';
 
@@ -42,6 +40,5 @@ var templates = [{
 }];
 
 export default {
-  locales,
   templates
 };
