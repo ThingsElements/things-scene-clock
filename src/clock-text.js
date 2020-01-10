@@ -54,6 +54,10 @@ const NATURE = {
 }
 
 export default class ClockText extends Text {
+  is3dish() {
+    return false
+  }
+
   get nature() {
     return NATURE
   }
